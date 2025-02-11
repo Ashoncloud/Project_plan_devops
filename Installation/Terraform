@@ -1,1 +1,28 @@
+Navigate to https://developer.hashicorp.com/terraform/install
 
+Using Manual Approach - Install Terraform on local windows machine 
+				
+					- Download Windows AMD64 Version Terraform -- zipfile 
+						- Right Click and Extract all 
+							- Get the Extracted Terraform Folder 
+								- Get the terraform - binary file 
+								
+								C:\Softwares\terraform_1.7.2_windows_amd64
+								
+					- Setup Environment Variable for terraform binary file 
+						- from windows start menu, search for enviroment variable 
+							- click of edit enviroment variable setting 
+								- find system properties dialog 
+									- select enviroment variables button
+										- On Environment Variables Dialog 
+											- goto to System Variable 
+												- Select path variable and edit 
+													- Click on New 
+														- add C:\Softwares\terraform_1.7.2_windows_amd64
+															- apply the changes and close the settings
+
+Or use any package manager and navigate to "https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli"
+like 
+chocolately for windows
+apt for ubuntu
+yum for debian etc...
