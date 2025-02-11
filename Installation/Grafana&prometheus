@@ -1,1 +1,160 @@
+Prometheus installation :
+
+Goto https://prometheus.io/download/ #this is to get link address
+
+wget https://github.com/prometheus/prometheus/releases/download/v2.48.0-rc.0/prometheus-2.48.0-rc.0.linux-amd64.tar.gz
+
+tar -zxvf prometheus-2.48.0-rc.0.linux-amd64.tar.gz
+
+prometheus-3.0.0-beta.0.linux-amd64.tar.gz - final package to get
+
+###===> Create following file: sudo vi /etc/systemd/system/prometheus.service
+copy paste the following description:
+------------------------------------------------------------------------------------------------------------------------------------------------
+[Unit]
+Description=Prometheus Server
+Documentation=https://prometheus.io/docs/introduction/overview/
+After=network-online.target
+
+[Service]
+User=root
+Restart=on-failure
+
+ExecStart=/root/prometheus-2.48.0-rc.0.linux-amd64/prometheus --config.file=/root/prometheus-2.48.0-rc.0.linux-amd64/prometheus.yml
+
+[Install]
+WantedBy=multi-user.target
+------------------------------------------------------------------------------------------------------------------------------------------------
+:wq save the file and run the following the command
+
+sudo systemctl daemon-reload
+sudo systemctl status prometheus
+sudo systemctl start prometheus
+systemctl enable prometheus  ------------------------------------------------to start and enable prometheus service
+
+<prometheus external ip / public ip>:9090 -----------------------to create to exposure to internet
+
+------------------------------------------------------------------------------------------------------configuration of prometheus done------------------------------------------------------------------------------------------------------------
+
+grafana installation :
+
+Goto https://grafana.com/grafana/download - choose the distribution you want to grafana to be installed
+*copy the link address
+
+wget https://dl.grafana.com/oss/release/grafana-9.1.2-1.x86_64.rpm
+
+sudo yum install grafana-9.1.2-1.x86_64.rpm -y --------------------------------to get package
+
+sudo /bin/systemctl enable grafana-server.service
+sudo /bin/systemctl start grafana-server.service
+sudo /bin/systemctl status grafana-server.service  -------------------------------to enable and start grafana service
+
+<grafana external / public ip>:3000 ---------------------------------------to create exposure on internet
+
+on grafana interface 
+use admin as username and password and log in 
+set your own password
+------------------------------------------------------------------------------------------------------configuration of grafana done------------------------------------------------------------------------------------------------------------------
+
+node exporter installation : --------------------------" A Node Exporter is needed on all servers or virtual machines to collect data on all nodes "
+
+############################### To be installed on node which we wish to monitor##########################################
+
+wget https://github.com/prometheus/node_exporter/releases/download/v1.4.0-rc.0/node_exporter-1.4.0-rc.0.linux-amd64.tar.gz
+
+tar -zxvf node_exporter-1.4.0-rc.0.linux-amd64.tar.gz ------to unzip the package
+
+##create the following file 
+sudo vi /etc/systemd/system/node_exporter.service
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+[Unit]
+Description=Prometheus Server
+Documentation=https://prometheus.io/docs/introduction/overview/
+After=network-online.target
+
+[Service]
+User=root
+Restart=on-failure
+
+ExecStart=/root/node_exporter-1.4.0-rc.0.linux-amd64/node_exporter
+
+[Install]
+WantedBy=multi-user.target
+------------------------------------------------------------------------------------------------------------------------------------------------
+sudo systemctl daemon-reload
+sudo systemctl status node_exporter
+sudo systemctl start node_exporter ---------------------------to enable and start node exporter
+
+-----------------------------------------now we are ready with all required to create connection between all nodes that we want to monitor--------------------------------------------------------------------------------------------------------------------------
+
+copy the IP address of the server that want to monitor 
+
+navigate to PROMETHEUS server and go to installation path of prometheus
+
+vi prometheus.yml
+## Add the target with valid node_exporter port as mentioned below:
+- targets: ["172.31.7.174:9100"]
+---------------------------------------like this add on how many server you want to monitor----------------------------------------------------
+
+***********resart prometheus*****************************
+sudo systemctl restart prometheus
+sudo systemctl status prometheus
+
+###Goto Prometheus server :
+
+<prometheus-external-ip>:9090
+http://13.232.146.141:9090/
+
+## in the query field type up and click on execute to see the list of servers up for monitoring
+
+###Create Prometheus Data Source in Grafana
+
+###Goto Grafana 
+
+##<grafana-external-ip>:3000
+##http://13.232.146.141:3000/
+
+Click on settings button --> Data Source --> Add Data Source --> Select Prometheus
+
+http://13.127.218.51/:9090/ -------------paste the prometheus link 
+
+http://43.204.38.168:9090/
+
+Enter in the Name field as Prometheus
+Enter in the url field as the prometheus-server url with port eg.: <prometheus-external-ip>:9090 | http://13.232.146.141:9090/
+
+Click on Save & Test --- for Data Source is working 
+Click on Back Button
+See the Prometheus Data Source Created 
+
+********************************************Test in Prometheus-server query ********************************************************************
+
+https://prometheus.io/docs/prometheus/latest/querying/examples/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
