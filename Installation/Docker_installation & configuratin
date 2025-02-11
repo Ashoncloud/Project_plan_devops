@@ -1,0 +1,42 @@
+To install docker we need docker engine to be installed on our server --------------------------------like we can install docker on our jenkins node's
+
+Install Docker Container Engine
+				https://docs.docker.com/engine/install/
+
+			Goto the Jenkins Slave Node & install Docker using :
+						
+					sudo apt install docker.io -y
+					
+					docker --version 
+
+
+********************************create a docker hub account to log in into your account to have repo's on container you create*****************************************
+
+
+
+---------------------------------------------------------once your are ready with the container image , you can push the container image to container registry--------------------------------------------------------------
+
+- Login to Container Registry using Docker Cli
+		
+			- Create Access Token in DockerHub 
+			
+			- DockerHub UserName 				docker login -u lkjkhkj
+			- DockerHub Access Token 			jhjvjkjbknknb
+		
+		- Docker Push Command to Push the Image to Container Registry
+
+
+
+****************************************************docker compose installation**********************************************************
+//https://docs.docker.com/compose/install/linux/
+
+
+DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
+mkdir -p $DOCKER_CONFIG/cli-plugins
+curl -SL https://github.com/docker/compose/releases/download/v2.18.1/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+	
+
+chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose -------------------------------------to give access to docker compose
+
+
+
