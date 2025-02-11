@@ -1,0 +1,165 @@
+Dock ref : 	https://www.jenkins.io/doc/book/installing/linux/
+
+pre-requesite to install jenkins : --------------------------------------------------these are needed to because Jenkins is fundamentally a Java-based application, meaning it is written in Java and requires the Java Runtime Environment (JRE) to run
+
+# Install Jdk: 
+
+sudo -i 			
+sudo apt update -y
+
+sudo apt install git -y 			# To install git if required
+
+
+sudo apt install openjdk-17-jre -y 						# previous version
+java -version						
+
+------------------------------installation of JDK done--------------------------------------------
+
+installation of actual jenkins tool :::::
+
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+sudo apt-get update
+
+sudo apt-get install jenkins -y
+
+-------------------------------------------installation of jenkins was done-------------------------------------------------------------------------
+
+post installation activity 
+
+systemctl status jenkins 
+systemctl stop jenkins 
+systemctl start jenkins 
+systemctl restart jenkins 
+systemctl enable jenkins  ---------------------------------------------------------------to start and enable the jenkins server
+
+Open web browser :
+
+http://<Public_IP_Address>:8080/
+
+E.g.: http://13.127.8.53:8080/
+
+cat /var/lib/jenkins/secrets/initialAdminPassword
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+once configuration of master was done , now its time to configure jenkins worker node as we are going to every work on worker node
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+Tools to be installed as a part of configuration 
+sudo -i
+
+apt update -y 
+
+Install Java ::
+
+sudo apt update -y 
+sudo apt install openjdk-17-jre -y
+java -version						
+
+Install GIT :
+
+sudo apt install git -y			
+git --version 
+
+Install Maven - Build Tool :
+https://maven.apache.org/install.html
+
+sudo apt install maven -y 
+
+mvn --version ------------------------------------------these tools are needed to create artifacts
+
+apt install docker.io -y -----------------------------install docker to create container
+
+===================================user creation on slave node to create SSH connection to master node===========================================================
+
+now create user to create 
+
+#Add User : 
+
+useradd devopsadmin -s /bin/bash -m -d /home/devopsadmin
+
+su - devopsadmin
+
+#ssh-keygen
+
+#for Ubuntu ::
+#ssh-keygen -t rsa -b 2048 -m PEM								#ubuntu 20.04
+
+ssh-keygen -t ecdsa -b 521										#ubuntu 22.04 or higher version of ubuntu				
+
+
+ls ~/.ssh 
+
+#You should see following two files:
+
+#id_ecdsa - private key
+#id_ecdsa.pub - public
+
+
+#cat id_rsa.pub > authorized_keys
+
+cat id_ecdsa.pub > authorized_keys
+
+chmod 600 /home/devopsadmin/.ssh/*
+
+# Add devopsadmin user to docker group. Run this command as a root user 
+
+#usermod -aG docker devopsadmin	-------------------------------------------------------------------this is used to 
+
+###user was given full permission to dokcer group
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ now we have to add slave node to jenkins master +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Login to Jenkins - Manage Jenkins - Attach the Slave Node to jenkins Master
+
+	Goto to Manage Jenkins 
+		Select Nodes 
+			On Nodes Dashboard, Click on New Node
+				Give Node Name, and choose permanent agent.
+
+################################################### install TOMCAT application - to run webapplication to browser##########################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
