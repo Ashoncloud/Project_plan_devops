@@ -1,0 +1,25 @@
+-------------------------------------Capestone-Project--------------------------------------
+
+TOOLS FLOW
+
+Terraform - to create cloud resource according to server configuration we want
+
+Ansible - to configure installation across all  the resource we created via terraform
+
+Git&Github - to manage and version control Source code repo and clone source repo 
+
+Maven - to clean the package and create .war file for to import web application to web server
+
+Docker - to create container out of light weighted executable package using docker file and version control all executable package.
+
+K8 - to manage multiple container's as pods for flawless prod deployment
+|                               |                                       |
+|                               |                                       |
+|                               |                                       |
+ \                              |                                       /
+  \                             |                                      / 
+   \                            |                                     /
+------------------------------------------------------------------------
+                                |
+                                |
+  Jenkins - to co-ordinate above tools to create end-to-end pipeline from git hub clone repo to k8 pod deployment
