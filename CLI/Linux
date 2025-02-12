@@ -1,1 +1,366 @@
+### **Basic Linux Commands**
 
+1. **`ls`**
+   - Lists the files and directories in the current directory.
+   - Example:
+     ```bash
+     ls
+     ```
+
+2. **`pwd`**
+   - Prints the current working directory.
+   - Example:
+     ```bash
+     pwd
+     ```
+
+3. **`cd`**
+   - Changes the current directory.
+   - Example:
+     ```bash
+     cd /home/user/Documents
+     ```
+
+4. **`mkdir`**
+   - Creates a new directory.
+   - Example:
+     ```bash
+     mkdir new_directory
+     ```
+
+5. **`rmdir`**
+   - Removes an empty directory.
+   - Example:
+     ```bash
+     rmdir old_directory
+     ```
+
+6. **`rm`**
+   - Removes files or directories.
+   - Example:
+     ```bash
+     rm file.txt
+     rm -r directory_name
+     ```
+
+7. **`touch`**
+   - Creates an empty file or updates the timestamp of an existing file.
+   - Example:
+     ```bash
+     touch newfile.txt
+     ```
+
+8. **`cat`**
+   - Displays the contents of a file.
+   - Example:
+     ```bash
+     cat file.txt
+     ```
+
+9. **`more`**
+   - Views a file’s contents one page at a time.
+   - Example:
+     ```bash
+     more file.txt
+     ```
+
+10. **`less`**
+    - Similar to `more`, but with additional features (e.g., backward navigation).
+    - Example:
+      ```bash
+      less file.txt
+      ```
+
+11. **`cp`**
+    - Copies files or directories.
+    - Example:
+      ```bash
+      cp file1.txt file2.txt
+      cp -r dir1 dir2
+      ```
+
+12. **`mv`**
+    - Moves or renames files or directories.
+    - Example:
+      ```bash
+      mv oldname.txt newname.txt
+      mv file.txt /home/user/dir/
+      ```
+
+13. **`chmod`**
+    - Changes file permissions (read, write, execute).
+    - Example:
+      ```bash
+      chmod 755 file.sh
+      chmod u+x file.sh
+      ```
+
+14. **`chown`**
+    - Changes the owner or group of a file.
+    - Example:
+      ```bash
+      chown user:group file.txt
+      ```
+
+15. **`ln`**
+    - Creates hard and symbolic links.
+    - Example:
+      ```bash
+      ln file.txt link.txt
+      ln -s /path/to/file symlink.txt
+      ```
+
+### **File Searching and Handling**
+
+1. **`find`**
+   - Searches for files and directories.
+   - Example:
+     ```bash
+     find /home -name "*.txt"
+     ```
+
+2. **`grep`**
+   - Searches for patterns in files.
+   - Example:
+     ```bash
+     grep "text_to_find" file.txt
+     grep -r "pattern" /path/to/dir/
+     ```
+
+3. **`locate`**
+   - Searches for files in the system’s database.
+   - Example:
+     ```bash
+     locate file.txt
+     ```
+
+4. **`which`**
+   - Shows the full path of a command.
+   - Example:
+     ```bash
+     which python
+     ```
+
+5. **`tar`**
+   - Archives files or extracts compressed files.
+   - Example (creating an archive):
+     ```bash
+     tar -czvf archive.tar.gz directory/
+     ```
+   - Example (extracting an archive):
+     ```bash
+     tar -xzvf archive.tar.gz
+     ```
+
+6. **`zip` / `unzip`**
+   - Compresses or extracts `.zip` files.
+   - Example (compressing):
+     ```bash
+     zip archive.zip file1 file2
+     ```
+   - Example (extracting):
+     ```bash
+     unzip archive.zip
+     ```
+
+### **System Monitoring and Process Management**
+
+1. **`top`**
+   - Displays real-time system resource usage (CPU, memory, etc.).
+   - Example:
+     ```bash
+     top
+     ```
+
+2. **`htop`**
+   - Similar to `top`, but with a more user-friendly, interactive interface.
+   - Example:
+     ```bash
+     htop
+     ```
+
+3. **`ps`**
+   - Displays information about running processes.
+   - Example:
+     ```bash
+     ps aux
+     ```
+
+4. **`kill`**
+   - Terminates a running process by PID.
+   - Example:
+     ```bash
+     kill <pid>
+     kill -9 <pid>  # Force kill
+     ```
+
+5. **`killall`**
+   - Terminates processes by name.
+   - Example:
+     ```bash
+     killall process_name
+     ```
+
+6. **`df`**
+   - Displays disk space usage.
+   - Example:
+     ```bash
+     df -h
+     ```
+
+7. **`du`**
+   - Displays disk usage for files and directories.
+   - Example:
+     ```bash
+     du -sh /path/to/directory
+     ```
+
+8. **`free`**
+   - Displays memory usage.
+   - Example:
+     ```bash
+     free -h
+     ```
+
+9. **`uptime`**
+   - Displays system uptime and load average.
+   - Example:
+     ```bash
+     uptime
+     ```
+
+10. **`dmesg`**
+    - Displays kernel ring buffer messages (useful for debugging hardware and boot issues).
+    - Example:
+      ```bash
+      dmesg | less
+      ```
+
+### **User and Group Management**
+
+1. **`useradd`**
+   - Adds a new user.
+   - Example:
+     ```bash
+     sudo useradd new_user
+     ```
+
+2. **`usermod`**
+   - Modifies a user account (e.g., changing groups, shell, etc.).
+   - Example:
+     ```bash
+     sudo usermod -aG group_name username
+     ```
+
+3. **`passwd`**
+   - Changes the password for a user.
+   - Example:
+     ```bash
+     sudo passwd username
+     ```
+
+4. **`groupadd`**
+   - Creates a new group.
+   - Example:
+     ```bash
+     sudo groupadd new_group
+     ```
+
+5. **`groups`**
+   - Displays the groups a user belongs to.
+   - Example:
+     ```bash
+     groups username
+     ```
+
+6. **`id`**
+   - Displays user and group information.
+   - Example:
+     ```bash
+     id username
+     ```
+
+7. **`whoami`**
+   - Displays the current logged-in username.
+   - Example:
+     ```bash
+     whoami
+     ```
+
+8. **`who`**
+   - Displays who is logged in to the system.
+   - Example:
+     ```bash
+     who
+     ```
+
+9. **`w`**
+   - Displays information about logged-in users and their activities.
+   - Example:
+     ```bash
+     w
+     ```
+
+### **Networking Commands**
+
+1. **`ping`**
+   - Sends ICMP echo requests to check network connectivity.
+   - Example:
+     ```bash
+     ping google.com
+     ```
+
+2. **`ifconfig`** (deprecated in favor of `ip`)
+   - Displays or configures network interfaces.
+   - Example:
+     ```bash
+     ifconfig
+     ```
+
+3. **`ip`**
+   - Displays or configures network interfaces, routing, and IP addresses.
+   - Example (show interfaces):
+     ```bash
+     ip addr show
+     ```
+   - Example (change IP address):
+     ```bash
+     sudo ip addr add 192.168.1.100/24 dev eth0
+     ```
+
+4. **`netstat`**
+   - Displays network connections, routing tables, and interface statistics.
+   - Example:
+     ```bash
+     netstat -tuln
+     ```
+
+5. **`ss`**
+   - Displays socket statistics (more modern alternative to `netstat`).
+   - Example:
+     ```bash
+     ss -tuln
+     ```
+
+6. **`traceroute`**
+   - Traces the route packets take to a network host.
+   - Example:
+     ```bash
+     traceroute google.com
+     ```
+
+7. **`curl`**
+   - Transfers data from or to a server (supports HTTP, FTP, and more).
+   - Example (fetch content from a URL):
+     ```bash
+     curl http://example.com
+     ```
+
+8. **`wget`**
+   - Non-interactive network downloader (often used for downloading files).
+   - Example:
+     ```bash
+     wget http://example.com/file.zip
+     ```
+
+---
