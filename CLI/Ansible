@@ -1,1 +1,193 @@
+### **1. Basic Commands**
+
+1. **`ansible --version`**
+   - Displays the version of Ansible installed on the system.
+   - Example:
+     ```bash
+     ansible --version
+     ```
+
+2. **`ansible [host-pattern] -m [module]`**
+   - Runs a module on one or more hosts.
+   - Example (checking disk usage on all hosts):
+     ```bash
+     ansible all -m command -a "df -h"
+     ```
+
+3. **`ansible all -m ping`**
+   - Pings all hosts in the inventory to check connectivity.
+   - Example:
+     ```bash
+     ansible all -m ping
+     ```
+
+4. **`ansible all -a "uptime"`**
+   - Runs a command (`uptime`) on all hosts.
+   - Example:
+     ```bash
+     ansible all -a "uptime"
+     ```
+
+### **2. Working with Playbooks**
+
+1. **`ansible-playbook [playbook.yml]`**
+   - Executes an Ansible playbook.
+   - Example:
+     ```bash
+     ansible-playbook setup.yml
+     ```
+
+2. **`ansible-playbook [playbook.yml] --check`**
+   - Runs a playbook in **check mode**, which simulates the changes but doesn't apply them.
+   - Example:
+     ```bash
+     ansible-playbook setup.yml --check
+     ```
+
+3. **`ansible-playbook [playbook.yml] --diff`**
+   - Runs a playbook and shows the differences made by Ansible (useful when files or configurations are changed).
+   - Example:
+     ```bash
+     ansible-playbook setup.yml --diff
+     ```
+
+4. **`ansible-playbook [playbook.yml] --extra-vars "key=value"`**
+   - Passes extra variables to the playbook at runtime.
+   - Example:
+     ```bash
+     ansible-playbook deploy.yml --extra-vars "env=production"
+     ```
+
+5. **`ansible-playbook [playbook.yml] --limit [host-pattern]`**
+   - Limits the execution of a playbook to specific hosts.
+   - Example:
+     ```bash
+     ansible-playbook deploy.yml --limit "webservers"
+     ```
+
+6. **`ansible-playbook [playbook.yml] --tags [tag_name]`**
+   - Runs only tasks within a playbook that are tagged with the specified tag.
+   - Example:
+     ```bash
+     ansible-playbook deploy.yml --tags "install"
+     ```
+
+7. **`ansible-playbook [playbook.yml] --start-at-task [task_name]`**
+   - Starts the execution of the playbook from a specific task.
+   - Example:
+     ```bash
+     ansible-playbook deploy.yml --start-at-task "Install Nginx"
+     ```
+
+### **3. Managing Inventories**
+
+1. **`ansible-inventory --list`**
+   - Displays the inventory in JSON format (for debugging purposes).
+   - Example:
+     ```bash
+     ansible-inventory --list
+     ```
+
+2. **`ansible-inventory --graph`**
+   - Displays the inventory as a graph.
+   - Example:
+     ```bash
+     ansible-inventory --graph
+     ```
+
+3. **`ansible-inventory -i [inventory_file] --list`**
+   - Lists the inventory from a custom inventory file.
+   - Example:
+     ```bash
+     ansible-inventory -i inventory.ini --list
+     ```
+
+4. **`ansible-inventory -i [inventory_file] --host [hostname]`**
+   - Displays detailed information about a specific host in the inventory.
+   - Example:
+     ```bash
+     ansible-inventory -i inventory.ini --host webserver1
+     ```
+
+### **4. Ad-hoc Commands**
+
+1. **`ansible [host-pattern] -m [module] -a "[arguments]"`**
+   - Runs a specific module on the target host(s).
+   - Example (checking for a package with `apt`):
+     ```bash
+     ansible webservers -m apt -a "name=nginx state=present"
+     ```
+
+2. **`ansible [host-pattern] -m [module] -a "[arguments]" --become`**
+   - Runs the module with elevated privileges (sudo).
+   - Example (installing a package with `apt` as root):
+     ```bash
+     ansible all -m apt -a "name=nginx state=present" --become
+     ```
+
+3. **`ansible [host-pattern] -m copy -a "src=./file dest=/path/to/dest" --become`**
+   - Copies files from the local system to remote hosts.
+   - Example:
+     ```bash
+     ansible all -m copy -a "src=local_file dest=/tmp/remote_file" --become
+     ```
+
+4. **`ansible [host-pattern] -m service -a "name=nginx state=started" --become`**
+   - Starts, stops, or restarts services on the target machine.
+   - Example:
+     ```bash
+     ansible webservers -m service -a "name=nginx state=started" --become
+     ```
+
+5. **`ansible [host-pattern] -m shell -a "command" --become`**
+   - Runs a shell command on the target machine.
+   - Example:
+     ```bash
+     ansible all -m shell -a "uptime" --become
+     ```
+
+6. **`ansible [host-pattern] -m command -a "command"`**
+   - Runs a command on the remote server without invoking a shell.
+   - Example:
+     ```bash
+     ansible all -m command -a "df -h"
+     ```
+
+### **5. Managing Ansible Collections**
+
+1. **`ansible-galaxy collection install [namespace].[collection_name]`**
+   - Installs an Ansible collection from Ansible Galaxy or other repositories.
+   - Example:
+     ```bash
+     ansible-galaxy collection install ansible.builtin
+     ```
+
+2. **`ansible-galaxy collection list`**
+   - Lists installed Ansible collections.
+   - Example:
+     ```bash
+     ansible-galaxy collection list
+     ```
+
+3. **`ansible-galaxy collection search [search_term]`**
+   - Searches for collections in Ansible Galaxy.
+   - Example:
+     ```bash
+     ansible-galaxy collection search nginx
+     ```
+
+### **6. Ansible Configuration**
+
+1. **`ansible-config list`**
+   - Lists all Ansible configurations and their current values.
+   - Example:
+     ```bash
+     ansible-config list
+     ```
+
+2. **`ansible-config dump`**
+   - Dumps the entire configuration for debugging purposes.
+   - Example:
+     ```bash
+     ansible-config dump
 
