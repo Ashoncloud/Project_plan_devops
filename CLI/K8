@@ -1,1 +1,265 @@
+Below are the most common `kubectl` commands for managing a Kubernetes environment:
 
+### **1. Basic Cluster Information**
+
+1. **`kubectl version`**
+   - Displays the client and server version of Kubernetes.
+   - Example:
+     ```bash
+     kubectl version
+     ```
+
+2. **`kubectl cluster-info`**
+   - Displays cluster information such as the API server URL and DNS settings.
+   - Example:
+     ```bash
+     kubectl cluster-info
+     ```
+
+3. **`kubectl get nodes`**
+   - Lists all nodes in the Kubernetes cluster.
+   - Example:
+     ```bash
+     kubectl get nodes
+     ```
+
+4. **`kubectl config view`**
+   - Displays Kubernetes configuration settings (like clusters, contexts, and user info).
+   - Example:
+     ```bash
+     kubectl config view
+     ```
+
+### **2. Managing Pods**
+
+1. **`kubectl get pods`**
+   - Lists all pods in the current namespace.
+   - Example:
+     ```bash
+     kubectl get pods
+     ```
+
+2. **`kubectl describe pod <pod_name>`**
+   - Provides detailed information about a specific pod.
+   - Example:
+     ```bash
+     kubectl describe pod <pod_name>
+     ```
+
+3. **`kubectl logs <pod_name>`**
+   - Displays the logs of a specific pod.
+   - Example:
+     ```bash
+     kubectl logs <pod_name>
+     ```
+
+4. **`kubectl exec -it <pod_name> -- /bin/bash`**
+   - Opens an interactive shell (`bash`) inside a running container of a pod.
+   - Example:
+     ```bash
+     kubectl exec -it <pod_name> -- /bin/bash
+     ```
+
+5. **`kubectl delete pod <pod_name>`**
+   - Deletes a specific pod.
+   - Example:
+     ```bash
+     kubectl delete pod <pod_name>
+     ```
+
+### **3. Managing Deployments**
+
+1. **`kubectl get deployments`**
+   - Lists all deployments in the current namespace.
+   - Example:
+     ```bash
+     kubectl get deployments
+     ```
+
+2. **`kubectl describe deployment <deployment_name>`**
+   - Provides detailed information about a specific deployment.
+   - Example:
+     ```bash
+     kubectl describe deployment <deployment_name>
+     ```
+
+3. **`kubectl create deployment <deployment_name> --image=<image_name>`**
+   - Creates a new deployment using a specified container image.
+   - Example:
+     ```bash
+     kubectl create deployment nginx-deployment --image=nginx
+     ```
+
+4. **`kubectl scale deployment <deployment_name> --replicas=<num_replicas>`**
+   - Scales the number of replicas for a deployment.
+   - Example:
+     ```bash
+     kubectl scale deployment nginx-deployment --replicas=3
+     ```
+
+5. **`kubectl delete deployment <deployment_name>`**
+   - Deletes a specific deployment.
+   - Example:
+     ```bash
+     kubectl delete deployment nginx-deployment
+     ```
+
+### **4. Managing Services**
+
+1. **`kubectl get services`**
+   - Lists all services in the current namespace.
+   - Example:
+     ```bash
+     kubectl get services
+     ```
+
+2. **`kubectl expose deployment <deployment_name> --type=<type> --port=<port>`**
+   - Exposes a deployment as a service (e.g., LoadBalancer, ClusterIP).
+   - Example:
+     ```bash
+     kubectl expose deployment nginx-deployment --type=LoadBalancer --port=80
+     ```
+
+3. **`kubectl delete service <service_name>`**
+   - Deletes a specific service.
+   - Example:
+     ```bash
+     kubectl delete service <service_name>
+     ```
+
+### **5. Managing Namespaces**
+
+1. **`kubectl get namespaces`**
+   - Lists all namespaces in the Kubernetes cluster.
+   - Example:
+     ```bash
+     kubectl get namespaces
+     ```
+
+2. **`kubectl create namespace <namespace_name>`**
+   - Creates a new namespace.
+   - Example:
+     ```bash
+     kubectl create namespace dev
+     ```
+
+3. **`kubectl delete namespace <namespace_name>`**
+   - Deletes a specific namespace.
+   - Example:
+     ```bash
+     kubectl delete namespace dev
+```
+### **7. Managing Resources**
+
+1. **`kubectl get <resource>`**
+   - Lists all resources of the specified type (e.g., pods, services, nodes).
+   - Example:
+     ```bash
+     kubectl get pods
+     kubectl get services
+     kubectl get nodes
+     ```
+
+2. **`kubectl apply -f <file.yaml>`**
+   - Applies a resource configuration defined in a YAML or JSON file.
+   - Example:
+     ```bash
+     kubectl apply -f deployment.yaml
+     ```
+
+3. **`kubectl delete -f <file.yaml>`**
+   - Deletes resources defined in a YAML or JSON file.
+   - Example:
+     ```bash
+     kubectl delete -f deployment.yaml
+     ```
+
+4. **`kubectl create -f <file.yaml>`**
+   - Creates resources defined in a YAML or JSON file.
+   - Example:
+     ```bash
+     kubectl create -f deployment.yaml
+     ```
+
+### **8. Cluster Role and RBAC**
+
+1. **`kubectl get roles`**
+   - Lists all roles in the current namespace.
+   - Example:
+     ```bash
+     kubectl get roles
+     ```
+
+2. **`kubectl get rolebindings`**
+   - Lists all role bindings in the current namespace.
+   - Example:
+     ```bash
+     kubectl get rolebindings
+     ```
+
+3. **`kubectl create role <role_name> --verb=<verb> --resource=<resource>`**
+   - Creates a role in a namespace with specified verbs and resources.
+   - Example:
+     ```bash
+     kubectl create role pod-reader --verb=get,list --resource=pods
+     ```
+
+4. **`kubectl create rolebinding <rolebinding_name> --role=<role_name> --user=<user_name>`**
+   - Creates a role binding to assign a role to a user or service account.
+   - Example:
+     ```bash
+     kubectl create rolebinding pod-reader-binding --role=pod-reader --user=developer
+     ```
+
+### **9. Troubleshooting and Debugging**
+
+1. **`kubectl describe <resource> <name>`**
+   - Provides detailed information about a resource (e.g., pod, deployment).
+   - Example:
+     ```bash
+     kubectl describe pod <pod_name>
+     ```
+
+2. **`kubectl logs <pod_name>`**
+   - Retrieves logs from a specific pod.
+   - Example:
+     ```bash
+     kubectl logs <pod_name>
+     ```
+
+3. **`kubectl get events`**
+   - Displays events in the current namespace to help debug issues.
+   - Example:
+     ```bash
+     kubectl get events
+     ```
+
+4. **`kubectl top pod`**
+   - Displays resource usage (CPU/Memory) for pods.
+   - Example:
+     ```bash
+     kubectl top pod
+     ```
+
+5. **`kubectl top node`**
+   - Displays resource usage (CPU/Memory) for nodes.
+   - Example:
+     ```bash
+     kubectl top node
+     ```
+
+### **10. Contexts and Switching Clusters**
+
+1. **`kubectl config use-context <context_name>`**
+   - Switches to a different cluster or namespace context.
+   - Example:
+     ```bash
+     kubectl config use-context my-cluster
+     ```
+
+2. **`kubectl config get-contexts`**
+   - Lists available contexts in your kubeconfig file.
+   - Example:
+     ```bash
+     kubectl config get-contexts
+     ```
