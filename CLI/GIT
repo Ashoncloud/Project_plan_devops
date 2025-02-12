@@ -1,1 +1,187 @@
+### Basic Git Commands
 
+1. **`git --version`**
+   - Displays the installed Git version.
+   - Example: `git --version`
+
+2. **`git config`**
+   - Configures Git settings (user name, email, etc.).
+   - Example: `git config --global user.name "Your Name"`
+   - Example: `git config --global user.email "your_email@example.com"`
+
+### Repository Setup and Initialization
+
+1. **`git init`**
+   - Initializes a new Git repository in the current directory.
+   - Example: `git init`
+
+2. **`git clone <repository_url>`**
+   - Clones a repository from a remote URL.
+   - Example: `git clone https://github.com/user/repo.git`
+
+### Staging and Committing Changes
+
+1. **`git status`**
+   - Shows the current status of your repository (which files are staged, unstaged, untracked).
+   - Example: `git status`
+
+2. **`git add <file>`**
+   - Stages a file for commit.
+   - Example: `git add index.html`
+
+3. **`git add .`**
+   - Stages all modified and new files in the repository.
+   - Example: `git add .`
+
+4. **`git commit -m "Commit message"`**
+   - Commits staged changes with a message.
+   - Example: `git commit -m "Initial commit"`
+
+5. **`git commit --amend`**
+   - Modifies the last commit (e.g., to correct a message or add forgotten changes).
+   - Example: `git commit --amend`
+
+### Branching and Merging
+
+1. **`git branch`**
+   - Lists all local branches.
+   - Example: `git branch`
+
+2. **`git branch <branch_name>`**
+   - Creates a new branch.
+   - Example: `git branch feature-xyz`
+
+3. **`git checkout <branch_name>`**
+   - Switches to the specified branch.
+   - Example: `git checkout feature-xyz`
+
+4. **`git checkout -b <branch_name>`**
+   - Creates and checks out a new branch in one command.
+   - Example: `git checkout -b feature-xyz`
+
+5. **`git merge <branch_name>`**
+   - Merges the specified branch into the current branch.
+   - Example: `git merge feature-xyz`
+
+6. **`git branch -d <branch_name>`**
+   - Deletes a local branch.
+   - Example: `git branch -d feature-xyz`
+
+### Working with Remote Repositories
+
+1. **`git remote -v`**
+   - Lists the remote repositories connected to your local repository.
+   - Example: `git remote -v`
+
+2. **`git remote add origin <repository_url>`**
+   - Adds a remote repository (usually for pushing to GitHub, GitLab, etc.).
+   - Example: `git remote add origin https://github.com/user/repo.git`
+
+3. **`git push <remote> <branch>`**
+   - Pushes changes from your local branch to a remote repository.
+   - Example: `git push origin main`
+
+4. **`git pull <remote> <branch>`**
+   - Fetches and merges changes from the remote repository to the local branch.
+   - Example: `git pull origin main`
+
+5. **`git fetch`**
+   - Fetches changes from the remote repository, but doesn't merge them.
+   - Example: `git fetch`
+
+6. **`git push --force`**
+   - Forces pushing changes, even if it results in overwriting remote commits.
+   - Example: `git push --force origin feature-xyz`
+
+### Viewing Changes and History
+
+1. **`git log`**
+   - Displays the commit history.
+   - Example: `git log`
+
+2. **`git log --oneline`**
+   - Displays a simplified version of the commit history (one commit per line).
+   - Example: `git log --oneline`
+
+3. **`git diff`**
+   - Shows the differences between the working directory and the index (staging area).
+   - Example: `git diff`
+
+4. **`git show <commit_id>`**
+   - Shows detailed information about a specific commit.
+   - Example: `git show 123abc`
+
+5. **`git blame <file>`**
+   - Shows who made the last modification to each line of a file.
+   - Example: `git blame index.html`
+
+### Undoing Changes
+
+1. **`git reset`**
+   - Resets the index (staging area) to the last commit. This can be used with options to undo changes.
+   - Example: `git reset` (unstages the last staged files)
+   - Example: `git reset --hard` (reverts all changes, including unstaged ones)
+
+2. **`git checkout -- <file>`**
+   - Discards changes in a file.
+   - Example: `git checkout -- index.html`
+
+3. **`git revert <commit_id>`**
+   - Creates a new commit that undoes the changes from a previous commit.
+   - Example: `git revert 123abc`
+
+### Tagging
+
+1. **`git tag <tag_name>`**
+   - Creates a tag pointing to the current commit.
+   - Example: `git tag v1.0`
+
+2. **`git tag -a <tag_name> -m "Message"`**
+   - Creates an annotated tag with a message.
+   - Example: `git tag -a v1.0 -m "First release"`
+
+3. **`git push origin <tag_name>`**
+   - Pushes a specific tag to the remote repository.
+   - Example: `git push origin v1.0`
+
+4. **`git push --tags`**
+   - Pushes all tags to the remote repository.
+   - Example: `git push --tags`
+
+### Stashing Changes
+
+1. **`git stash`**
+   - Temporarily saves changes that are not ready to commit.
+   - Example: `git stash`
+
+2. **`git stash pop`**
+   - Applies the most recent stashed changes and removes it from the stash list.
+   - Example: `git stash pop`
+
+3. **`git stash list`**
+   - Lists all stashes.
+   - Example: `git stash list`
+
+4. **`git stash apply <stash_id>`**
+   - Applies a specific stash.
+   - Example: `git stash apply stash@{0}`
+
+### Other Useful Commands
+
+1. **`git clean -fd`**
+   - Removes untracked files and directories.
+   - Example: `git clean -fd`
+
+2. **`git shortlog`**
+   - Summarizes commits by author.
+   - Example: `git shortlog`
+
+3. **`git cherry-pick <commit_id>`**
+   - Applies changes from a specific commit to the current branch.
+   - Example: `git cherry-pick 123abc`
+
+4. **`git diff <branch1> <branch2>`**
+   - Compares the differences between two branches.
+   - Example: `git diff main feature-xyz`
+
+Git offers a lot of power and flexibility through the CLI, allowing you to manage version control in a variety of ways. Let me know if you'd like to dive deeper into any of these commands!
