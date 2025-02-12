@@ -1,1 +1,138 @@
+### Basic Docker CLI Commands
 
+1. **`docker --version`**  
+   Shows the installed Docker version.
+
+2. **`docker info`**  
+   Displays detailed information about the Docker installation (e.g., containers, images, networks, etc.).
+
+### Docker Container Commands
+
+1. **`docker run`**  
+   Creates and starts a container.
+   - Example: `docker run hello-world`
+
+2. **`docker ps`**  
+   Lists running containers.
+   - Example: `docker ps` (to list only running containers)
+   - Example: `docker ps -a` (to list all containers, running and stopped)
+
+3. **`docker stop`**  
+   Stops a running container.
+   - Example: `docker stop <container_id_or_name>`
+
+4. **`docker start`**  
+   Starts a stopped container.
+   - Example: `docker start <container_id_or_name>`
+
+5. **`docker restart`**  
+   Restarts a running or stopped container.
+   - Example: `docker restart <container_id_or_name>`
+
+6. **`docker exec`**  
+   Executes a command in a running container.
+   - Example: `docker exec -it <container_id_or_name> bash`
+
+7. **`docker logs`**  
+   Retrieves the logs from a container.
+   - Example: `docker logs <container_id_or_name>`
+
+8. **`docker rm`**  
+   Removes a container (it must be stopped first).
+   - Example: `docker rm <container_id_or_name>`
+
+### Docker Image Commands
+
+1. **`docker build`**  
+   Builds an image from a Dockerfile.
+   - Example: `docker build -t my_image .`
+
+2. **`docker pull`**  
+   Pulls an image from a Docker registry (e.g., Docker Hub).
+   - Example: `docker pull ubuntu:latest`
+
+3. **`docker push`**  
+   Pushes an image to a Docker registry.
+   - Example: `docker push my_image:latest`
+
+4. **`docker images`**  
+   Lists all locally stored images.
+   - Example: `docker images`
+
+5. **`docker rmi`**  
+   Removes an image.
+   - Example: `docker rmi <image_id_or_name>`
+
+### Docker Volume Commands
+
+1. **`docker volume create`**  
+   Creates a volume.
+   - Example: `docker volume create my_volume`
+
+2. **`docker volume ls`**  
+   Lists all volumes.
+   - Example: `docker volume ls`
+
+3. **`docker volume inspect`**  
+   Displays detailed information about a volume.
+   - Example: `docker volume inspect my_volume`
+
+4. **`docker volume rm`**  
+   Removes a volume.
+   - Example: `docker volume rm my_volume`
+
+### Docker Network Commands
+
+1. **`docker network create`**  
+   Creates a new network.
+   - Example: `docker network create my_network`
+
+2. **`docker network ls`**  
+   Lists all networks.
+   - Example: `docker network ls`
+
+3. **`docker network inspect`**  
+   Inspects a network and displays detailed information.
+   - Example: `docker network inspect my_network`
+
+4. **`docker network rm`**  
+   Removes a network.
+   - Example: `docker network rm my_network`
+
+### Docker Compose (For managing multi-container apps)
+
+1. **`docker-compose up`**  
+   Starts the services defined in a `docker-compose.yml` file.
+   - Example: `docker-compose up`
+
+2. **`docker-compose down`**  
+   Stops and removes containers, networks, and volumes defined in a `docker-compose.yml` file.
+   - Example: `docker-compose down`
+
+3. **`docker-compose build`**  
+   Builds the images for services defined in a `docker-compose.yml` file.
+   - Example: `docker-compose build`
+
+### Other Useful Commands
+
+1. **`docker pull <image>`**  
+   Pulls a Docker image from a registry.
+   - Example: `docker pull nginx`
+
+2. **`docker push <image>`**  
+   Pushes an image to a registry (e.g., Docker Hub).
+   - Example: `docker push my_image:latest`
+
+3. **`docker inspect`**  
+   Retrieves detailed information about a container or image.
+   - Example: `docker inspect <container_or_image_id>`
+
+4. **`docker stats`**  
+   Displays real-time statistics about containers.
+   - Example: `docker stats`
+
+5. **`docker events`**  
+   Shows a stream of real-time events.
+   - Example: `docker events`
+
+These are just the basics, but Docker offers a lot of functionality for building and managing containerized applications. Let me know if you'd like to dive deeper into any of these commands!
