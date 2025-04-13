@@ -1,0 +1,18 @@
+Resource Type	Kind	apiVersion
+Pod	Pod	v1
+Deployment	Deployment	apps/v1
+Service	Service	v1
+ConfigMap	ConfigMap	v1
+Secret	Secret	v1
+Ingress	Ingress	networking.k8s.io/v1
+PVC	PersistentVolumeClaim	v1
+HPA	HorizontalPodAutoscaler	autoscaling/v2
+Job	Job	batch/v1
+CronJob	CronJob	batch/v1
+Role / RoleBinding	Role, RoleBinding	rbac.authorization.k8s.io/v1
+ClusterRole/Binding	ClusterRole, ClusterRoleBinding	rbac.authorization.k8s.io/v1
+Namespace	Namespace	v1
+StatefulSet	StatefulSet	apps/v1
+DaemonSet	DaemonSet	apps/v1
+NetworkPolicy	NetworkPolicy	networking.k8s.io/v1
+PDB	PodDisruptionBudget	policy/v1
